@@ -1,3 +1,4 @@
 FROM tomcat
 
-COPY fantasybaseballREST.war /usr/local/tomcat/webapps/
+COPY FantasyBaseball.war /usr/local/tomcat/webapps/
+COPY fbaseball.basnippet /opt/fbaseball.basnippet
