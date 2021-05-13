@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="fbdocker">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../eclipse/jee-2020-06/eclipse/"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="Web App Libraries.libraryclasspath"/>
+    <path id="EAR Libraries.libraryclasspath"/>
+    <path id="Apache Tomcat v8.5 [Apache Tomcat v8.5].libraryclasspath">
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/annotations-api.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/catalina-ant.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/catalina-ha.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/catalina-storeconfig.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/catalina-tribes.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/catalina.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/ecj-4.6.3.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/el-api.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/jasper-el.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/jasper.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/jaspic-api.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/jsp-api.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/servlet-api.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-api.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-coyote.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-dbcp.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-i18n-de.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-i18n-es.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-i18n-fr.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-i18n-ja.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-i18n-ko.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-i18n-ru.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-i18n-zh-CN.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-jdbc.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-jni.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-util-scan.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-util.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-websocket.jar"/>
+        <pathelement location="../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/websocket-api.jar"/>
+    </path>
+    <path id="fbdocker.classpath">
+        <pathelement location="build/classes"/>
+        <pathelement location="D:/OneDrive/dev/lib/mysql-connector-java-8.0.16.jar"/>
+        <pathelement location="D:/OneDrive/dev/lib/json-20180813.jar"/>
+        <pathelement location="D:/OneDrive/dev/lib/commons-lang3-3.3.2.jar"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+        <path refid="Apache Tomcat v8.5 [Apache Tomcat v8.5].libraryclasspath"/>
+        <pathelement location="D:/OneDrive/dev/lib/gson-2.8.1.jar"/>
+        <pathelement location="D:/OneDrive/dev/lib/simplesql.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="build/classes"/>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="build/classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="fbdocker.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="Helper">
+        <java classname="com.watson.fantasybaseball.common.Helper" failonerror="true" fork="yes">
+            <classpath refid="fbdocker.classpath"/>
+        </java>
+    </target>
+    <target name="HTMLHelper">
+        <java classname="com.watson.html.HTMLHelper" failonerror="true" fork="yes">
+            <classpath refid="fbdocker.classpath"/>
+        </java>
+    </target>
+    <target name="New_configuration">
+        <java classname="" failonerror="true" fork="yes">
+            <classpath refid="fbdocker.classpath"/>
+        </java>
+    </target>
+    <target name="PriceImporter">
+        <java classname="com.watson.fantasybaseball.PriceImporter" failonerror="true" fork="yes">
+            <classpath refid="fbdocker.classpath"/>
+        </java>
+    </target>
+    <target name="Worker">
+        <java classname="com.watson.fantasybaseball.Worker" failonerror="true" fork="yes">
+            <classpath refid="fbdocker.classpath"/>
+        </java>
+    </target>
+    <target name="YahooUpdater">
+        <java classname="com.watson.fantasybaseball.YahooUpdater" failonerror="true" fork="yes">
+            <classpath refid="fbdocker.classpath"/>
+        </java>
+    </target>
+</project>
